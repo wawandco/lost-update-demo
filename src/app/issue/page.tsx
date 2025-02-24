@@ -1,6 +1,6 @@
 import { getStock } from '@/app/lib/data'
 import { Watermelon } from '@/app/lib/definitions'
-import OperationControl from '@/app/ui/operation-control'
+import DetailIssue from '@/app/ui/detail-issue'
 
 export default async function Page() {
   const stock = (await getStock()) as number
@@ -10,7 +10,7 @@ export default async function Page() {
   }
   return (
     <>
-      <OperationControl option="issue" watermelons={wts} />
+      <DetailIssue key={'detail-issue'} watermelons={wts} />
     </>
   )
 }

@@ -10,7 +10,7 @@ export default async function Page() {
   }
   return (
     <>
-      <OperationControl option="issue" watermelons={wts} />
+      <OperationControl option="fix" watermelons={wts} />
     </>
   )
 }

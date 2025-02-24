@@ -1,21 +1,85 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.wt-1 {
+  right: 37%;
+  top: 1.2rem;
+}
+
+.wt-2 {
+  right: 42%;
+  top: 1.5rem;
+}
+
+.wt-3 {
+  right: 47%;
+  top: 1.8rem;
+}
+
+.wt-4 {
+  right: 52%;
+  top: 2.1rem;
+}
+
+.wt-5 {
+  right: 57%;
+  top: 2.3rem;
+}
+
+.wt-cart-1 {
+  right: 25%;
+}
+
+.wt-cart-2 {
+  right: 35%;
+}
+
+.wt-cart-3 {
+  right: 45%;
+}
+
+.wt-cart-4 {
+  right: 45%;
+}
+
+.wt-cart-5 {
+  right: 65%;
+}
+
+.wt-user-1 {
+  right: 25%;
+}
+
+.wt-user-2 {
+  right: 42%;
+}
+
+.wt-user-3 {
+  right: 59%;
+}
+
+.wt-c-1 {
+  right: 12%;
+}
+.wt-c-2 {
+  right: 19%;
+}
+.wt-c-3 {
+  right: 26%;
+}
+.wt-c-4 {
+  right: 33%;
+}
+.wt-c-5 {
+  right: 50%;
 }

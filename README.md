@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lost Update Demo
 
-## Getting Started
+Welcome to the **Lost Update Demo**! This project demonstrates the **lost update concurrency issue** in a Next.js application. Follow the steps below to set up and run the demo.
 
-First, run the development server:
+## Prerequisites
+
+### 1. Install Dependencies
+
+Ensure you have all necessary dependencies installed. Run the following command in the project root:
 
 ```bash
-npm run dev
+pnpm install
+# or
+yarn install
+# or
+npm install
+# or
+bun install
+```
+
+### 2. Connect to a Database
+
+This demo requires a PostgreSQL database. Follow these steps to set up a database:
+
+1. Visit [Vercel](https://vercel.com/) and create a project.
+2. Navigate to the **Storage** option (Vercel Database Marketplace) and choose a PostgreSQL provider. This project is configured to work with **Neon**, but you can select another provider if preferred.
+3. Retrieve your database connection string and add it to an `.env` file in the project root:
+
+```env
+# Recommended for most uses
+DATABASE_URL=postgres://user:password@your-database-host.com:5432/database-name
+
+# For uses requiring a connection without pgbouncer
+DATABASE_URL_UNPOOLED=postgres://user:password@your-database-host.com:5432/database-name
+
+# Parameters for constructing your own connection string
+PGHOST=your-database-host.com
+PGHOST_UNPOOLED=your-database-host.com
+PGUSER=user
+PGDATABASE=database-name
+PGPASSWORD=password
+
+# Parameters for Vercel Postgres Templates
+POSTGRES_URL=postgres://user:password@your-database-host.com:5432/database-name
+POSTGRES_URL_NON_POOLING=postgres://user:password@your-database-host.com:5432/database-name
+POSTGRES_USER=user
+POSTGRES_HOST=your-database-host.com
+POSTGRES_PASSWORD=password
+POSTGRES_DATABASE=database-name
+POSTGRES_URL_NO_SSL=postgres://user:password@your-database-host.com:5432/database-name?sslmode=disable
+POSTGRES_PRISMA_URL=postgres://user:password@your-database-host.com:5432/database-name?connection_limit=1
+```
+
+## Running the Project
+
+Once the dependencies are installed and the database is set up, start the development server:
+
+```bash
+pnpm run dev
 # or
 yarn dev
 # or
-pnpm dev
+npm dev
 # or
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will start the Next.js app locally. Open [http://localhost:3000](http://localhost:3000) in your browser to access the demo.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Seeding the Database
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To create the necessary tables and seed the database with initial data, follow these steps:
 
-## Learn More
+1. Open the `route.ts` file and **remove** the following line:
+   ```ts
+   return Response.json({ message: "Remove this code line" });
+   ```
+2. Save the file.
+3. In your browser, navigate to:
+   ```
+   http://localhost:3000/seed
+   ```
+   This will trigger the seed function, creating the necessary database tables and inserting initial data.
+4. After seeding is complete, you should see a message confirming that the database was successfully seeded.
 
-To learn more about Next.js, take a look at the following resources:
+## Navigating the Demo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The demo consists of three sections, accessible via buttons at the top left:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Issue** (Default Page): Demonstrates the lost update issue. Press the **spacebar** to trigger the animation.
+- **Explanation**: Provides an overview of the issue with visual slices. Navigate forward and backward using the **arrow keys**.
+- **Fix**: Shows the corrected implementation. Press the **spacebar** to run the animation.
 
-## Deploy on Vercel
+Explore these sections to understand the concurrency issue and its resolution. Enjoy learning about the lost update problem in Next.js! 🚀
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
